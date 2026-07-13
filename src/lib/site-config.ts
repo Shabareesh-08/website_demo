@@ -74,6 +74,7 @@ export const primaryNav = [
   },
   { label: "FAQs", href: "/faqs" },
   { label: "Blog", href: "/blog" },
+  { label: "Partner With Us", href: "/partner" },
   { label: "Contact", href: "/contact" },
 ];
 
