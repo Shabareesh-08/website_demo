@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ============================================================
+   EXPERT CLAIMS SOLUTIONS - DESIGN TOKENS
+   Enterprise / editorial system. Deep navy + muted teal + gold
+   (gold reserved strictly for awards/stats/achievements).
+   ============================================================ */
+
+:root {
+  /* --- Core palette --- */
+  --color-navy-950: #071226;
+  --color-navy-900: #0b1f3a;
+  --color-navy-800: #142a4d;
+  --color-navy-700: #1d3a63;
+  --color-navy-600: #2c4f7c;
+  --color-navy-500: #3f6494;
+
+  --color-teal-900: #12332d;
+  --color-teal-700: #1f5148;
+  --color-teal-600: #2f6f62;
+  --color-teal-500: #3c8776;
+  --color-teal-100: #e7f0ee;
+  --color-teal-50: #f2f7f6;
+
+  --color-gold-700: #8a6a2e;
+  --color-gold-600: #b08d45;
+  --color-gold-400: #cbab6a;
+  --color-gold-100: #f3ead4;
+
+  --color-neutral-0: #ffffff;
+  --color-neutral-25: #fbfbfa;
+  --color-neutral-50: #f6f6f4;
+  --color-neutral-100: #eeefec;
+  --color-neutral-200: #e4e7e7;
+  --color-neutral-300: #d3d7d6;
+  --color-neutral-400: #a3aaa9;
+
+  --color-ink-900: #0b1f3a;
+  --color-ink-700: #33415a;
+  --color-ink-600: #475467;
+  --color-ink-500: #667085;
+  --color-ink-400: #8993a4;
+
+  --color-success: #2f6f62;
+  --color-danger: #8a3a2e;
+
+  --shadow-card: 0 1px 2px rgba(11, 31, 58, 0.04), 0 8px 24px -8px rgba(11, 31, 58, 0.10);
+  --shadow-card-hover: 0 2px 4px rgba(11, 31, 58, 0.06), 0 16px 40px -12px rgba(11, 31, 58, 0.16);
+  --shadow-nav: 0 1px 0 rgba(11, 31, 58, 0.06), 0 8px 24px -16px rgba(11, 31, 58, 0.12);
+
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-inter);
+
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-500: var(--color-navy-500);
+
+  --color-teal-900: var(--color-teal-900);
+  --color-teal-700: var(--color-teal-700);
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-50: var(--color-teal-50);
+
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-100: var(--color-gold-100);
+
+  --color-neutral-0: var(--color-neutral-0);
+  --color-neutral-25: var(--color-neutral-25);
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-400: var(--color-ink-400);
+
+  --color-background: var(--color-neutral-0);
+  --color-foreground: var(--color-ink-900);
+
+  --max-width-8xl: 1440px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-neutral-0);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-teal-100);
+  color: var(--color-navy-900);
+}
+
+/* --- Editorial eyebrow label --- */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal-600);
+}
+
+/* --- Signature element: the Ledger Rule ---
+   A thin baseline with a marker tick, echoing a claim's progress line
+   (filed -> recovered). Appears under eyebrows, as a slide progress
+   indicator in the hero, and as the fill mechanism behind stats. */
+.ledger-rule {
+  position: relative;
+  height: 1px;
+  background: var(--color-neutral-200);
+  overflow: hidden;
+}
+.ledger-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  background: var(--color-teal-600);
+}
+
+.card-surface {
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.4s var(--ease-editorial), transform 0.4s var(--ease-editorial);
+}
+.card-surface:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-teal-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.hero-scanline {
+  animation: scanline-drift 6s var(--ease-editorial) infinite;
+}
+
+@keyframes scanline-drift {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(76vh);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
